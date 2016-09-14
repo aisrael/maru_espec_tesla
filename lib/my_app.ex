@@ -18,3 +18,23 @@ defmodule MyApp do
     Supervisor.start_link(children, opts)
   end
 end
+
+defmodule MyAPP.Router.Homepage do
+  use Maru.Router
+
+  get do
+    json(conn, %{ hello: :world })
+  end
+end
+
+defmodule MyAPP.API do
+  use Maru.Router
+
+  mount MyAPP.Router.Homepage
+
+  rescue_from :all do
+    conn
+    |> put_status(500)
+    |> text("Server Error")
+  end
+end
