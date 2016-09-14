@@ -15,7 +15,7 @@ defmodule MyApp.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :maru],
+    [applications: [:logger, :maru, :hackney],
      mod: {MyApp, []}]
   end
 
@@ -32,6 +32,9 @@ defmodule MyApp.Mixfile do
     [
       {:maru, "~> 0.10"},
       {:espec, "~> 1.0.1", only: :test},
+      {:tesla, "~> 0.5.0"},
+      {:poison, ">= 1.0.0"},
+      {:hackney, "~> 1.6.1"}
     ]
   end
 end
